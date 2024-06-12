@@ -1,0 +1,32 @@
+<mat-card class="container">
+  <mat-card-content>
+    <h3>Search for a Users</h3>
+
+    <form class="form" [formGroup]="searchFromGroup">
+      <app-select-input
+        placeholder="Pick one"
+        formControlName="searchSelectControl"
+        [options]="filteredOptions$ | async"
+        [isLoading]="isLoading$ | async"
+        (onSearch)="searchSubject.next($event)"
+      />
+
+      <button
+        mat-raised-button
+        color="primary"
+        class="button"
+        (click)="$event.stopPropagation(); search()"
+      >
+        <span *ngIf="isLoading$ | async">Loading...</span>
+        <span *ngIf="!(isLoading$ | async)">Search</span>
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="container">
+  <mat-card-content>
+    <h3>Result</h3>
+    <pre>{{ searchFromGroup.get('searchSelectControl')?.value | json }}</pre>
+  </mat-card-content>
+</mat-card>

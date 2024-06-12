@@ -1,0 +1,17 @@
+.container {
+  margin: 25px auto 0 auto;
+  max-width: 480px;
+  width: 100%;
+}
+
+
+.form {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  width: 100%;
+}
+
+.button {
+  min-width: 100px;
+}
